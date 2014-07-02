@@ -1,4 +1,4 @@
-package fpinscala.datastructures.chapter4
+package fpinscala.chapter4
 
 object Mean {
     def mean(ints: Seq[Double]): Option[Double] = {
@@ -133,7 +133,8 @@ object Either {
 case class Left[+E](value: E) extends Either[E, Nothing]
 case class Right[+A](value: A) extends Either[Nothing, A]
 
-object Main extends App {
+object Test {
+  def run() = {
     val foo1 = List(Some(5), Some(2), Some(10))
     println(Option.sequence_nestmatch(foo1))
     println(Option.sequence_flatmap(foo1))
@@ -161,4 +162,5 @@ object Main extends App {
     println(Either.sequence(bar3))
     val bar4 = List(2, 4, 6, 7)
     println(Either.traverse(foo4)({ x => if (x % 2 == 0) { Right(x * 2) } else { Left(x + " is not even") } }))
+  }
 }
